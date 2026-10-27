@@ -1,0 +1,62 @@
+[1mdiff --git a/config/database.php b/config/database.php[m
+[1mindex abbb88e..ded455b 100644[m
+[1m--- a/config/database.php[m
+[1m+++ b/config/database.php[m
+[36m@@ -60,7 +60,7 @@[m
+             'strict' => true,[m
+             'engine' => null,[m
+             'options' => extension_loaded('pdo_mysql') ? array_filter([[m
+[31m-                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),[m
+[32m+[m[32m                \Pdo\Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),[m
+             ]) : [],[m
+         ],[m
+ [m
+[36m@@ -80,7 +80,7 @@[m
+             'strict' => true,[m
+             'engine' => null,[m
+             'options' => extension_loaded('pdo_mysql') ? array_filter([[m
+[31m-                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),[m
+[32m+[m[32m                \Pdo\Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),[m
+             ]) : [],[m
+         ],[m
+ [m
+[36m@@ -96,7 +96,7 @@[m
+             'prefix' => '',[m
+             'prefix_indexes' => true,[m
+             'search_path' => 'public',[m
+[31m-            'sslmode' => env('DB_SSLMODE', 'prefer'),[m
+[32m+[m[32m            'sslmode' => 'prefer',[m
+         ],[m
+ [m
+         'sqlsrv' => [[m
+[36m@@ -149,7 +149,7 @@[m
+ [m
+         'options' => [[m
+             'cluster' => env('REDIS_CLUSTER', 'redis'),[m
+[31m-            'prefix' => env('REDIS_PREFIX', Str::slug((string) env('APP_NAME', 'laravel')).'-database-'),[m
+[32m+[m[32m            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),[m
+             'persistent' => env('REDIS_PERSISTENT', false),[m
+         ],[m
+ [m
+[36m@@ -160,10 +160,6 @@[m
+             'password' => env('REDIS_PASSWORD'),[m
+             'port' => env('REDIS_PORT', '6379'),[m
+             'database' => env('REDIS_DB', '0'),[m
+[31m-            'max_retries' => env('REDIS_MAX_RETRIES', 3),[m
+[31m-            'backoff_algorithm' => env('REDIS_BACKOFF_ALGORITHM', 'decorrelated_jitter'),[m
+[31m-            'backoff_base' => env('REDIS_BACKOFF_BASE', 100),[m
+[31m-            'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),[m
+         ],[m
+ [m
+         'cache' => [[m
+[36m@@ -173,10 +169,6 @@[m
+             'password' => env('REDIS_PASSWORD'),[m
+             'port' => env('REDIS_PORT', '6379'),[m
+             'database' => env('REDIS_CACHE_DB', '1'),[m
+[31m-            'max_retries' => env('REDIS_MAX_RETRIES', 3),[m
+[31m-            'backoff_algorithm' => env('REDIS_BACKOFF_ALGORITHM', 'decorrelated_jitter'),[m
+[31m-            'backoff_base' => env('REDIS_BACKOFF_BASE', 100),[m
+[31m-            'backoff_cap' => env('REDIS_BACKOFF_CAP', 1000),[m
+         ],[m
+ [m
+     ],[m
